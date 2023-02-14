@@ -26,8 +26,8 @@ class Documentation():
     def __init__(self, docstyles: DocStyles):
         self.docstyles = docstyles
 
-    def search_code(self, path: str, docstyle: DocStyles):
-        print(docstyle)
+    def raw_doc_head(self, path: str, docstyle: DocStyles):
+        pass
 
     def generate_docs(self):
         pass
