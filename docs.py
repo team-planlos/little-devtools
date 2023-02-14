@@ -8,19 +8,30 @@ def check_create_dir(dire: str):
     try:
         os.chdir(dire)
     except Exception:
-        try:
-            os.mkdir(dire)
-        except:
-            pass
+        os.mkdir(dire)
 
-def identificate_doc(path: str, ):
-    pass
-
-class DocStyle(Enum):
+class DocStyles(Enum):
     _decoding = "doc"
     _head = "head"
     _body = "body"
     PYTHON = ["head'''doc'''body", 'head"""doc"""body', "# docheadbody", "## docheadbody", "### docheadbody"]
+    RUST = ["///docheadbody", "//!docheadbody"]
+
+class Documentation():
+
+    docstyles: DocStyles
+    target: str # "web", "md" and "raw" is usual
+    content: list[str]
+
+    def __init__(self, docstyles: DocStyles):
+        self.docstyles = docstyles
+
+    def search_code(self, path: str, docstyle: DocStyles):
+        print(docstyle)
+
+    def generate_docs(self):
+        pass
 
 if __name__ == "__main__":
-    check_create_dir("test")
+    # identificate_doc("docs.py", DocStyles.PYTHON)
+    help(Documentation)

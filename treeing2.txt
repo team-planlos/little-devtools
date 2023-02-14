@@ -1,0 +1,9 @@
+.
+├── docs.py
+├── __pycache__
+│   └── docs.cpython-310.pyc
+├── README.md
+├── treeing2.txt
+└── treeing.txt
+
+1 directory, 5 files
