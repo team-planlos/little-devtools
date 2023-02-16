@@ -37,7 +37,7 @@ class GithubMarkdown(FileHandle):
     footnotes: list[str]
 
     def __init__(self, path: str):
-        super().__init__(self, path)
+        super().__init__(path)
         self.footnote_index = 0
 
     def ready(self, path=""):
