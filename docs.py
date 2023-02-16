@@ -1,13 +1,14 @@
-from enum import Enum
-
 """Made for gathering documentation and structure all of that in a folder
 """
+
+from enum import Enum
+
 
 def check_create_dir(dire: str):
     import os
     try:
         os.chdir(dire)
-    except Exception:
+    except EnvironmentError:
         os.mkdir(dire)
 
 class DocStyles(Enum):

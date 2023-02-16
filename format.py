@@ -7,8 +7,29 @@ def indent():
 def dedent():
     pass
 
-def tree_to_iterator(path: str) -> list[str]:
-    pass
+def tree_to_iterator(path = "./") -> list[str]:
+    """ Works not on Mac but on powershell, Windows command line and bash
+    """
+    # get tree
+    from os import getcwd, chdir, system
+    startpath = getcwd()
+    chdir(path)
+    from temphash import TmpFile
+    tmpfile = TmpFile("./")
+    # cl, on win cmd and bash
+    system("tree >> {}//{}".format(tmpfile.path, tmpfile.hash_name))
+    # Parse tree
+    content = ""
+    with open(tmpfile.path, "r") as file:
+        content = file.read()
+    del tmpfile
+    content = content[content.index(".\n")+2:]
+    lines = content.split("\n")
+    for line in lines:
+        pass # erase tree-stuff and generate paths
+    chdir(startpath)
+    return []
+
 
 class FileHandle():
 
@@ -41,7 +62,7 @@ class GithubMarkdown(FileHandle):
         self.footnote_index = 0
 
     def ready(self, path=""):
-        self.drop_footnotes
+        self.drop_footnotes()
         super().ready(path=path)
 
     def erase_all_md(self, s: str) -> str:
