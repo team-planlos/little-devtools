@@ -7,17 +7,22 @@ def indent():
 def dedent():
     pass
 
+def _erase_treestyle(s: str): str:
+    pass
+
 def tree_to_iterator(path = "./") -> list[str]:
     """ Works not on Mac but on powershell, Windows command line and bash
     """
     # get tree
-    from os import getcwd, chdir, system
+    from os import getcwd, chdir
     startpath = getcwd()
     chdir(path)
     from temphash import TmpFile
     tmpfile = TmpFile("./")
     # cl, on win cmd and bash
-    system("tree >> {}//{}".format(tmpfile.path, tmpfile.hash_name))
+    from subprocess import run, PIPE
+    bashCommand = "tree >> {}//{}".format(tmpfile.path, tmpfile.hash_name)
+    c = run(["pip", "install", "maturin"], check=True, text=True, stdout=PIPE, stderr=PIPE)
     # Parse tree
     content = ""
     with open(tmpfile.path, "r") as file:
