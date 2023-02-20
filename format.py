@@ -2,6 +2,8 @@
 """
 
 # TODO use better f'string' s
+# TODO Html Tag String Processing
+# TODO Tables in MD
 
 def indent():
     pass

@@ -1,6 +1,9 @@
 """Made for gathering documentation and structure all of that in a folder
 """
 
+# TODO Rust docs stylesheet
+# TODO easy doc-writing for Rust and Py
+
 from enum import Enum
 
 
