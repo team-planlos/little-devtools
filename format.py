@@ -11,7 +11,7 @@ def indent():
 def dedent():
     pass
 
-def _erase_treestyle(s: str): str:
+def _erase_treestyle(s: str) -> str:
     pass
 
 def tree_to_iterator(path = "./") -> list[str]:
