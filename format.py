@@ -25,7 +25,7 @@ def tree_to_iterator(path = "./") -> list[str]:
     tmpfile = TmpFile("./")
     # cl, on win cmd and bash
     from subprocess import run, PIPE
-    bashCommand = "tree >> {}//{}".format(tmpfile.path, tmpfile.hash_name)
+    bashCommand = f"tree >> {tmpfile.path}//{tmpfile.hash_name}"
     c = run(["pip", "install", "maturin"], check=True, text=True, stdout=PIPE, stderr=PIPE)
     # Parse tree
     content = ""
