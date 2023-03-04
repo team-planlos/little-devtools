@@ -172,6 +172,9 @@ class GithubMarkdown(FileHandle):
     def comment(self, s: str):
         self.add("<!-- {} -->".format(s))
 
+    def hsep(self):
+        self.add("---")
+
 class HTML5(FileHandle):
 
     pass
