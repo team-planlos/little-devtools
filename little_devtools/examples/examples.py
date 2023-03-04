@@ -1,4 +1,4 @@
-from little_devtools import word_counter
+import little_devtools
 
-result = word_counter.sum_as_string(1, 2)
+result = little_devtools.sum_as_string(1, 2)
 print(result)
