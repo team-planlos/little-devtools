@@ -1,5 +1,6 @@
 // Tempfile module
 use std::env;
+use std::fs::File;
 
 pub struct Tempfile {
     hash_name: String,
@@ -16,28 +17,32 @@ impl Tempfile {
             None => {path=env.current_dir()},
         }
 
-        match hash_date {
-            Some(h) => {
-                if h {
-                    self.hash_date()
-                } else {
-                    self.hash_rand()
-                }
-            },
-            None => {self.hash_date()},
-        }
-
         let self = Tempfile {
             hash_name: hash_name,
             path: path,
         };
+
+        match hash_date {
+            Some(h) => {
+                if h {
+                    hash_name = self.hash_date();
+                } else {
+                    hash_name = self.hash_rand();
+                }
+            },
+            None => {hash_name = self.hash_date()},
+        }
+        File::create(format!("{}", self.hash_name))?;
     }
 
-    pub fn hash_date(&self) {
-        todo!()
+    pub fn hash_date(&self) -> str {
+        use chrono::offset::Local;
+
+        format!(chrono::offset::Local::now())
     }
 
-    pub fn hash_rand(&self) {
-        todo!()
+    pub fn hash_rand(&self) -> str {
+        use random::Source;
+        let mut source = random::default(42);
     }
 }
