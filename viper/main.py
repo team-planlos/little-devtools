@@ -22,15 +22,23 @@ MR = Motor(Port.B)
 
 db = DriveBase(ML, MR, 88, 88)
 
+
+print('links: ')
+print(CL.reflection())
+print('rechts: ')
+print(CR.reflection())
+
 while True:
-    if CL.reflection() < 50:
+    if CR.reflection() < 40:
+        db.turn(-2)
+    elif CL.reflection() < 40:
+        db.turn(2)
+    else:
         db.straight(30)
-        if CL.reflection<50 and CR.reflection<50:
-            db.turn(60)
-        elif CR.reflection()>50:
-            db.turn(300)
-        else:
-            db.straight(50)
-    db.straight(50)
+    print('links: ')
+    print(CL.reflection())
+    print('rechts: ')
+    print(CR.reflection())
+    wait(10)
             
     
